@@ -1,0 +1,78 @@
+<template>
+    <div class="footer" >
+        <router-link tag="div" to="/recommend" class="item-tab">
+            <span class="tab-link">推荐</span>
+        </router-link>
+        <router-link tag="div" to="/singer" class="item-tab">
+            <span class="tab-link">歌手</span>
+        </router-link>
+        <router-link tag="div" to="/rank" class="item-tab">
+            <span class="tab-link">排行</span>
+        </router-link>
+        <router-link tag="div" to="/search" class="item-tab">
+            <span class="tab-link">搜索</span>
+        </router-link>
+    </div>
+</template>
+<script>
+//    import Header from '@/components/Header'
+    export default {
+        data(){
+            return{
+
+                selected:this.footerId,
+                lists:[
+                    {
+                        'id':"1",
+                        'title':'首页',
+                        'url':'http://localhost:8080/static/icon/homepage_1.png',
+                        "path":'/home',
+                    },
+                    {
+                        'id':"2",
+                        'title':'发现',
+                        'url':'http://localhost:8080/static/icon/find.png',
+                        "path":'/find',
+                    },
+                    {
+                        'id':"3",
+                        'title':'我的',
+                        'url':'http://localhost:8080/static/icon/user.png',
+                        "path":'/mine',
+                    }
+                ]
+            }
+        },
+        components:{
+//            'v-header':Header
+        },
+        props:['footer-id'],
+
+    }
+</script>
+<style scoped lang="stylus" rel="stylesheet/stylus">
+    @import "../../common/stylus/varibale"
+    .footer
+        position : fixed
+        display :flex
+        display: -webkit-flex
+        bottom : 0
+        width: 100%
+        height : 44px
+        /*line-height :29px*/
+
+        font-size :$font-size-medium
+        .item-tab
+            display :inline-block
+            flex:1
+            text-align :center
+            .tab-link
+                padding-bottom: 5px
+                color: $color-text-l
+            &.router-link-active
+                .tab-link
+                    color:$color-theme
+                    border-top: 1px solid $color-theme
+
+
+</style>
