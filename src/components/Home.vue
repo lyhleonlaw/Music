@@ -4,7 +4,7 @@
         <!--<mt-search   cancel-text="取消" placeholder="搜索" ></mt-search>-->
         <mt-swipe :auto="3000">
             <mt-swipe-item v-for="(item,index) in lists" :key="index" class="mint-swipe">
-            	<a :href="item.href" rel="external nofollow" >
+            	<a :href="item.href" >
             	   <img :src="item.url" class="img"/>
             	   <!--<span class="desc"></span>-->
                 </a>
