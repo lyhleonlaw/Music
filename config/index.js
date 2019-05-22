@@ -10,7 +10,18 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+        '/musichall': {
+            target: 'https://c.y.qq.com',  //目标接口域名
+            secure: false,
+            changeOrigin: true,  //是否跨域
+        },
+        '/getSinger': {
+            target: 'https://u.y.qq.com',  //目标接口域名
+            secure: false,
+            changeOrigin: true,  //是否跨域
+        },
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

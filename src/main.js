@@ -9,11 +9,16 @@ import fastclick from 'fastclick'
 // import 'mint-ui/lib/style.css'
 // import '../static/css/main.css'
 import 'style/index.styl'
-
+import VueLazyload from 'vue-lazyload'
 import VueResource from 'vue-resource'
 
 fastclick.attach(document.body);
 Vue.use(VueResource);
+Vue.use(VueLazyload,{
+    preLoad: 1.3,
+    loading: 'static/images/loading.png',
+    error: 'static/images/error.png',
+});
 // Vue.use(Mint);
 
 Vue.config.productionTip = false

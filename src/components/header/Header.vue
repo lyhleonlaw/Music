@@ -1,7 +1,7 @@
 <template>
 	<div class='v-header'>
 		<div class="icon"></div>
-		<h1 class="text">Music</h1>
+		<h1 class="text">？？</h1>
 	</div>
 </template>
 

@@ -29,8 +29,8 @@
            },
            setTime:{
                type:Number,
-               default:2000
-           }
+               default:4000
+           },
        },
        mounted(){
            setTimeout(() => {
@@ -38,26 +38,27 @@
                this._initDots();
                this._initSlider();
                this._initPlay();
-               if(this,autoPlay) {
-                   _play();
+               if(this.autoPlay) {
+                   this._play();
                }
-           },20)
+           },20);
+           window.addEventListener('resize', () =>{
+              this. _sliderSetWidth(true);
+              this.slider.refresh();
+           });
        },
        methods:{
-           _sliderSetWidth(){
+           _sliderSetWidth(isResize){
                this.children = this.$refs.sliderGroup.children;
-
-               let sliderWidth = this.$refs.slider.clientWidth;
+                let sliderWidth = this.$refs.slider.clientWidth;
                 let width = 0;
-
                 for (let i = 0; i <this.children.length; i++) {
                     let child = this.children[i];
                     addClass(child,'slider-item');
                     child.style.width = sliderWidth +'px';
                     width += sliderWidth;
                 }
-//               console.log(width)
-               if (this.loop){
+               if (this.loop && !isResize){
                     width += 2*sliderWidth;
                }
                this.$refs.sliderGroup.style.width = width +'px';
@@ -68,7 +69,6 @@
                this.slider = new BScroll(this.$refs.slider,{
                    scrollY: false,
                    scrollX: true,
-                   click: true,
                    momentum:false,
                    snap:{
                        loop:this.loop,
@@ -79,26 +79,34 @@
 
                this.slider.on('scrollEnd',()=>{
                    let newCurrPage = this.slider.getCurrentPage().pageX;
-
                    this.currPage = newCurrPage;
+                   if(this.autoPlay){
+                       clearTimeout(this.time);
+                       this._play();
+
+                   }
                })
 
            },
            _initDots(){
-
                this.dots = new Array(this.children.length);
            },
            _initPlay(){
                this.slider.auto_play = this.autoPlay;
            },
            _play(){
-               let newCurrPage = this.currPage+;
+               let pageIndex = this.currPage+1;
+               this.time = setTimeout(() => {
+                   if (pageIndex == this.dots.length){
+                       this.currPage = 0;
+                       pageIndex = 0;
+                   }
+                   this.slider.goToPage(pageIndex);
 
-               let time = setInterval(() => {
-                   this.slider.
-               },this.setTime)
+
+               },this.setTime);
+
            }
-
 
 
        }

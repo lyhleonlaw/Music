@@ -1,16 +1,16 @@
 <template>
     <div class="footer" >
         <router-link tag="div" to="/recommend" class="item-tab">
-            <span class="tab-link">推荐</span>
+            <span class="tab-link">1</span>
         </router-link>
         <router-link tag="div" to="/singer" class="item-tab">
-            <span class="tab-link">歌手</span>
+            <span class="tab-link">2</span>
         </router-link>
         <router-link tag="div" to="/rank" class="item-tab">
-            <span class="tab-link">排行</span>
+            <span class="tab-link">3</span>
         </router-link>
         <router-link tag="div" to="/search" class="item-tab">
-            <span class="tab-link">搜索</span>
+            <span class="tab-link">4</span>
         </router-link>
     </div>
 </template>
@@ -58,8 +58,9 @@
         display: -webkit-flex
         bottom : 0
         width: 100%
-        height : 44px
-        /*line-height :29px*/
+        height : 3rem
+        background-color:#31384f
+        line-height :3rem
 
         font-size :$font-size-medium
         .item-tab
@@ -72,7 +73,7 @@
             &.router-link-active
                 .tab-link
                     color:$color-theme
-                    border-top: 1px solid $color-theme
+                    border-bottom: 0.02rem solid $color-theme
 
 
 </style>
